@@ -11,6 +11,7 @@ client.on('ready', ready);
 function ready()
 {
 	console.log("Let's fucking go");
+	client.user.setActivity('!fuck @target');
 }
 
 client.on('messageCreate', messageCreate);
@@ -48,6 +49,11 @@ async function messageCreate(message)
 		}
 		if(args[1])
 		{
+			if(message.mentions.has(client.user))
+			{
+				message.channel.send("Are you telling *me* to shut the fuck up?");
+				return true;
+			}
 			let FuckListTarget = fuck.FuckListTarget;
 			let randomNumber = Math.floor(Math.random()*FuckListTarget.length);
 			let foaasAPI = await new API();

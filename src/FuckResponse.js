@@ -15,7 +15,6 @@ exports.FuckListTarget = [
 	"you",
 	"ing"
 ]
-
 exports.FuckList = [
 	"asshole",
 	"bag",
