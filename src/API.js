@@ -7,11 +7,10 @@ module.exports = class API
 	*@name foaasRequestFrom
 	*@param {string} fuck
 	*@param {string} target
-	*@param {string} author
 	*/
-	async foaasRequestTarget(fuck, target, author)
+	async foaasRequestTarget(fuck, target)
 	{
-		let response = await Axios.get(`https://www.foaas.com/${fuck}/${target}/${author}`);
+		let response = await Axios.get(`https://www.foaas.com/${fuck}/${target}/buffer`);
 		//Why am I sending subtitle if I'm not going to use it?
 		//Fuck you thats why!
 		let res = [
@@ -25,11 +24,10 @@ module.exports = class API
 	*@method
 	*@name foaasRequest
 	*@param {string} fuck
-	*@param {string} author
 	*/
 	async foaasRequest(fuck, author)
 	{
-		let response = await Axios.get(`https://www.foaas.com/${fuck}/${author}`);
+		let response = await Axios.get(`https://www.foaas.com/${fuck}/buffer`);
 		let res = [
 			response.data.message,
 			response.data.subtitle

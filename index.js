@@ -18,7 +18,6 @@ async function messageCreate(message)
 {
 	const args = message.content.trim().split(/ +/g);
 	const cmd = args[0].toLowerCase();
-	let username = message.member.displayName;
 	if(message.author.bot)
 		return;
 	if(cmd == "!fuck")
@@ -30,23 +29,21 @@ async function messageCreate(message)
 					setTimeout(() => msg.delete(), 5000)
 				  })
 				.catch(console.error);
-			return;
 		}
 		if(!args[1])
 		{
 			let FuckList = fuck.FuckList;
 			let randomNumber = Math.floor(Math.random()*FuckList.length);
 			let foaasAPI = await new API();
+
 			try {
 				const response = await foaasAPI.foaasRequest(
-					FuckList[randomNumber],
-					username);
+					FuckList[randomNumber]);
 				message.channel.send(response[0]);
 				message.delete();
 			}
 			catch (e){
 				console.log("error" + e);
-				return;
 			}
 		}
 		if(args[1])
@@ -62,14 +59,12 @@ async function messageCreate(message)
 			try {
 				const response = await foaasAPI.foaasRequestTarget(
 						FuckListTarget[randomNumber],
-						buffer, 
-						username);
+						buffer);
 				message.channel.send(response[0]);
 				message.delete();
 			}
 			catch (e){
 				console.log("error" + e);
-				return;
 			}
 		}
 	}
